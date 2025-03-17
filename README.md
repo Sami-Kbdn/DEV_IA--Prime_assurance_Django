@@ -1,7 +1,8 @@
-# <p align="center">Prédiction de Prime d'Assurance</p>
+# <p align="center">Assur'Aimant Django Application</p>
 <p align="center">
-    <img src="images/project_logo.png" alt="Pas de logo pour ce projet" width="200">
+    <img src="MyApp/static/images/logo.png" alt="Assur'Aimant Logo" width=auto>
 </p>
+
 
 ## ➤ Menu
 
