@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Navbar Section -->
+{% include 'includes/navbar_section.html' %}
+
+<!-- Main Content Section -->
+<div class="main-container bg-[#f2f2f2] pt-8 px-8 pb-12">
+  <div class="container mx-auto bg-white rounded-lg shadow-xl p-8">
+    <h2 class="text-3xl font-bold text-[#1c2b36]">Créer vos informations d'assurance</h2>
+    <p class="text-lg text-[#5e6c7e]">Remplissez le formulaire ci-dessous pour créer vos informations d'assurance.</p>
+
+    <div class="form-container mt-8">
+      <form method="post" class="space-y-6">
+        {% csrf_token %}
+        {% for field in form %}
+          <div class="form-group">
+            <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-[#5e6c7e]">{{ field.label }}</label>
+            <div class="mt-2">
+              {{ field }}
+            </div>
+            {% if field.errors %}
+              <span class="error text-red-500 text-sm mt-2">{{ field.errors|striptags }}</span>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn-submit w-full py-3 bg-[#00bfae] text-white rounded-md hover:bg-[#008f8f] transition duration-300">Enregistrer</button>
+      </form>
+    </div>
+
+    <div class="mt-6">
+      <a href="{% url 'app:user_infos' %}" class="text-[#00bfae] hover:underline">Retour à mes informations personnelles</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

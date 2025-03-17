@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Mes informations - Assur'Aimant{% endblock %}
+
+{% block content %}
+
+<!-- Navbar Section -->
+{% include 'includes/navbar_section.html' %}
+
+<!-- Main Content Section -->
+<div class="main-container bg-[#f2f2f2] pt-8 px-8 pb-12">
+  <div class="container mx-auto bg-white rounded-lg shadow-xl p-8">
+    <h1 class="text-3xl font-bold text-[#1c2b36]">Modifier mes informations personnelles</h1>
+
+    <!-- Display Messages -->
+    {% if messages %}
+      <ul class="messages mt-6 space-y-4">
+        {% for message in messages %}
+          <li class="message {{ message.tags }} p-4 text-sm border-l-4 border-yellow-500 bg-[#fef6d4] rounded-md shadow-md">
+            {{ message }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <!-- Form to Update User Information -->
+    <form method="post" class="form-update mt-8 space-y-6">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="form-group space-y-4">
+          <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-[#5e6c7e]">{{ field.label }}</label>
+          <div class="relative">
+            {{ field }}
+            {% if field.errors %}
+              <div class="text-sm text-red-500 mt-1">
+                {{ field.errors }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn-submit w-full py-3 bg-[#00bfae] text-white rounded-md hover:bg-[#008f8f] transition duration-300">
+        Mettre à jour
+      </button>
+    </form>
+
+    <!-- Link to go back to user information -->
+    <div class="back-link mt-6">
+      <a href="{% url 'app:user_infos' %}" class="text-[#00bfae] hover:underline">Retour à mes informations personnelles</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

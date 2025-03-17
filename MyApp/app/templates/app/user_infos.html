@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Mes informations - Assur'Aimant{% endblock %}
+
+{% block content %}
+
+<!-- Navbar Section -->
+{% include 'includes/navbar_section.html' %}
+
+<!-- Main Content Section -->
+<div class="main-container bg-[#f2f2f2] pt-8 px-8 pb-12">
+    <div class="container mx-auto bg-white rounded-lg shadow-xl p-8">
+        <h1 class="text-3xl font-semibold mb-6 text-[#1c2b36]">Mes informations</h1>
+
+        <!-- Informations personnelles -->
+        <h3 class="text-2xl font-semibold mb-4 text-[#1c2b36]">Informations personnelles</h3>
+        <table class="min-w-full table-auto border-collapse mb-8">
+            <thead class="bg-[#00bfae]">
+                <tr>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Nom</th>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Prénom</th>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b hover:bg-[#f7f7f7] transition duration-200">
+                    <td class="px-4 py-2">{{ user.last_name }}</td>
+                    <td class="px-4 py-2">{{ user.first_name }}</td>
+                    <td class="px-4 py-2">{{ user.email }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Informations complémentaires -->
+        <h3 class="text-2xl font-semibold mb-4 text-[#1c2b36]">Informations complémentaires</h3>
+        <table class="min-w-full table-auto border-collapse mb-8">
+            <thead class="bg-[#00bfae]">
+                <tr>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Genre</th>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Âge</th>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Région</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b hover:bg-[#f7f7f7] transition duration-200">
+                    <td class="px-4 py-2">{{ gender }}</td>
+                    <td class="px-4 py-2">{{ insurance_infos.age }}</td>
+                    <td class="px-4 py-2">{{ region }}</td>
+                </tr>
+            </tbody>
+            <thead class="bg-[#00bfae]">
+                <tr>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Nombre d'enfants</th>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Fumeur</th>
+                    <th class="px-4 py-2 text-left text-white font-semibold">IMC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b hover:bg-[#f7f7f7] transition duration-200">
+                    <td class="px-4 py-2">{{ insurance_infos.children }}</td>
+                    <td class="px-4 py-2">{{ smoker }}</td>
+                    <td class="px-4 py-2">{{ insurance_infos.bmi }}</td>
+                </tr>
+        </table>
+
+        <!-- Options -->
+        <h3 class="text-2xl font-semibold mb-4 text-[#1c2b36]">Options</h3>
+        <table class="min-w-full table-auto border-collapse mb-8">
+            <thead class="bg-[#00bfae]">
+                <tr>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Ajouter des informations</th>
+                    <th class="px-4 py-2 text-left text-white font-semibold">Modifier mes informations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b hover:bg-[#f7f7f7] transition duration-200">
+                    <td class="px-4 py-2"><a href="{% url 'app:create_insurance_infos' %}" class="text-[#00509d] hover:text-[#ffd500]">Ajouter</a></td>
+                    <td class="px-4 py-2"><a href="{% url 'app:update_infos' %}" class="text-[#00509d] hover:text-[#ffd500]">Modifier</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

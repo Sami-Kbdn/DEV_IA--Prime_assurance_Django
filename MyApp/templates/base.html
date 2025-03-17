@@ -1,0 +1,30 @@
+{% load static tailwind_tags %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Assur'Aimant{% endblock %}</title>
+    {% tailwind_css %}
+</head>
+<body class="bg-navy-100 text-navy-900">
+    <header class="bg-navy-600 py-0">
+        <div class="container mx-auto flex justify-end">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Logo Assur'Aimant" class="h-50 md:h-40">
+            </div>
+        </div>        
+    </header>
+
+    <main class="py-0">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-navy-600 text-white text-center py-4">
+        <p>&copy; 2025 Assur'Aimant</p>
+    </footer>
+</body>
+</html>
